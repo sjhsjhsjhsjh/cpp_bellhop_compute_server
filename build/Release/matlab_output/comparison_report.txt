@@ -1,0 +1,59 @@
+========== TL COMPUTATION COMPARISON REPORT ==========
+C++ Output Dir: .
+MATLAB Output Dir: matlab_output
+Generated at: 2026-04-23 17:19:10
+=====================================================
+
+[✓ IDENTICAL] tl_03746184ff89742468362ffe3690ed01.txt
+[✓ IDENTICAL] tl_053391d63d417d40181dee0a16479bad.txt
+[✓ IDENTICAL] tl_185da3de10d876a73f946a569fd22768.txt
+[✓ IDENTICAL] tl_1d15869ed451f6d9bd8a45e2c745e5b2.txt
+[✗ DIFF] tl_2a842134bfadf23cec76cfa1b492de39.txt
+  Lines: 450 (C++) vs 450 (MATLAB)
+  Matching rows: 445/449 (99.11%)
+  Max TL diff (dB): 0.239400
+  Mean TL diff (dB): 0.001674
+  Max range diff (%): 0.000197
+  Max bearing diff (%): 0.000149
+
+[✗ DIFF] tl_3bde46f25b5cf1c117a42bd13eee8f7a.txt
+  Lines: 450 (C++) vs 450 (MATLAB)
+  Matching rows: 445/449 (99.11%)
+  Max TL diff (dB): 1.065700
+  Mean TL diff (dB): 0.004473
+  Max range diff (%): 0.000159
+  Max bearing diff (%): 0.000142
+
+[✓ IDENTICAL] tl_4745c5eadef2e0e00e700d18d6b3e48d.txt
+[✓ IDENTICAL] tl_505c8c105da332b93074e5cf1c4f7cd2.txt
+[✓ IDENTICAL] tl_59a11f7c833281487f499792eed15a15.txt
+[✓ IDENTICAL] tl_6650d14116374fc512a32b98bffc42ae.txt
+[✓ IDENTICAL] tl_76fcf4f1a0ee3c551e10409474d004fe.txt
+[✓ IDENTICAL] tl_842259975fe2ced1692cca37ee64fb4a.txt
+[✓ IDENTICAL] tl_9736ec7f7fcf4253c195e8a62d2d3a64.txt
+[✓ IDENTICAL] tl_9e00a1672c938eaa0ea13750bebbea4f.txt
+[✓ IDENTICAL] tl_b1f8837fede1fabe4b42536136fd4c53.txt
+[✓ IDENTICAL] tl_dabe2ce0ea0f43d2c069cf2db7efc897.txt
+[✓ IDENTICAL] tl_e81b7bcb5ced30be53e43b8ee70a0e53.txt
+[✓ IDENTICAL] tl_e9f559c7455097a3dc7f899ac7f24134.txt
+[✓ IDENTICAL] tl_f1670f41c4dbe8370e0754c181abe8b8.txt
+[✓ IDENTICAL] tl_f9f4f1039404aa64bfdfc41483ed4241.txt
+
+=====================================================
+SUMMARY STATISTICS
+=====================================================
+Total files compared: 20
+Identical files: 18 (90.00%)
+Files with differences: 2 (10.00%)
+Missing MATLAB files: 0
+
+DIFFERENCE STATISTICS (across all differing files)
+  Max TL diff (dB): 1.065700
+  Mean TL diff (dB): 0.003073
+  Max range diff (%): 0.000197
+  Max bearing diff (%): 0.000149
+=====================================================
+TOLERANCE THRESHOLDS
+=====================================================
+TL_dB absolute tolerance: ±0.01 dB
+Range/Bearing relative tolerance: ±0.01%

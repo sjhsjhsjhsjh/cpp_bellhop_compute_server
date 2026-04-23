@@ -4,4 +4,4 @@
 
 void write_tl2file(PointPair& pair, const TLField& tlField);
 
-void write_param2env(PointPair& pair, const bhc::bhcParams<true>& params);
+void write_param2env(const PointPair& pair, bhc::bhcParams<true>& params);

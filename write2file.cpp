@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <iomanip>
+#include <algorithm>
 
 void write_tl2file(PointPair& pair, const TLField& tlField)
 {
@@ -11,7 +12,16 @@ void write_tl2file(PointPair& pair, const TLField& tlField)
         output_file << std::fixed << std::setprecision(4);
         output_file << pair.source.x << " " << pair.source.y << " " << pair.source.z << " "
                 << pair.receiver.x << " " << pair.receiver.y << " " << pair.receiver.z << std::endl;
-        for (const auto& point : tlField.data) {
+
+        // 将 TLField 中的 data 深拷贝一份，然后进行排序（按 depth、range、bearing 顺序）
+        auto sorted_data = tlField.data;
+        std::sort(sorted_data.begin(), sorted_data.end(), [](const TLPoint& a, const TLPoint& b) {
+                if (a.depth != b.depth) return a.depth < b.depth;
+                if (a.range != b.range) return a.range < b.range;
+                return a.bearing < b.bearing;
+        });
+
+        for (const auto& point : sorted_data) {
                 if (point.valid) {
                         output_file << std::fixed << std::setprecision(4)
                                 << point.depth << " "

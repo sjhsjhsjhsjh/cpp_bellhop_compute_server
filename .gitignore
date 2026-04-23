@@ -1,2 +1,14 @@
-/build
-/.vscode
+build/*
+!build/Release/
+build/Release/*
+!build/Release/matlab_output
+build/Release/matlab_output/*
+!build/Release/batch_process_env_files.m
+!build/Release/compare_results.m
+!build/Release/runtest_batch.m
+!build/Release/test_single_file.m
+!build/Release/compare_single_file.m
+!build/Release/extract_and_write_tl.m
+!build/Release/parse_env.m
+!build/Release/matlab_output/comparison_report.txt
+/.vscode/

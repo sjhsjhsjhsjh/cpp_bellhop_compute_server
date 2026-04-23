@@ -85,7 +85,7 @@ void compute_worker(int start, int end, std::vector<PointPair>& pairs)
                 write_tl2file(pair, tlField);
 
                 // 输出到文件以供MATLAB计算
-                write_tl2file(pair, tlField);
+                write_param2env(pair, params);
 
                 global_computed_count.fetch_add(1, std::memory_order_relaxed);
         }
