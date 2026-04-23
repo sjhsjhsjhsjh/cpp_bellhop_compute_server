@@ -5,6 +5,9 @@
 #include <chrono>
 #include <thread>
 #include <atomic>
+#include <fstream>
+#include <vector>
+#include <string>
 
 // 这一行必须添加，Bellhop C++规定的，然后把 bellhopcxxlib.dll 放在可执行文件同目录下
 #define BHC_DLL_IMPORT 1
@@ -82,10 +85,10 @@ void compute_worker(int start, int end, std::vector<PointPair>& pairs)
                 ans[enemy_y / 100][uuv_x / 100][uuv_y / 100][uuv_z / 50] = average_TL;
 
                 // 将结果输出到文件
-                write_tl2file(pair, tlField);
+                // write_tl2file(pair, tlField);
 
                 // 输出到文件以供MATLAB计算
-                write_param2env(pair, params);
+                // write_param2env(pair, params);
 
                 global_computed_count.fetch_add(1, std::memory_order_relaxed);
         }
@@ -124,7 +127,7 @@ int main()
 
         // 分配计算任务
         INFO("Computing tasks are being allocated to threads...");
-        total_pairs = 20; // 先测试用，后续再放开
+        // total_pairs = 20; // 测试用
         int points_per_thread = total_pairs / num_threads;
         for (int i = 0; i < num_threads; ++i) {
                 int start = i * points_per_thread;
@@ -173,6 +176,28 @@ int main()
                 if (thread.joinable()) {
                         thread.join();
                 }
+        }
+
+        // 计算全部完成，将 ans 数组保存到文件中，供后续分析
+        std::fstream ans_file("average_TL_results.txt");
+        if (ans_file.is_open()) {
+                for (int enemy_y = 0; enemy_y < 101; enemy_y++) {
+                        for (int uuv_x = 0; uuv_x < 101; uuv_x++) {
+                                for (int uuv_y = 0; uuv_y < 101; uuv_y++) {
+                                        for (int uuv_z = 0; uuv_z < 11; uuv_z++) {
+                                                ans_file << enemy_y << "," << uuv_x << ","
+                                                        << uuv_y << "," << uuv_z << ","
+                                                        << ans[enemy_y][uuv_x][uuv_y][uuv_z]
+                                                        << "\n";
+                                        }
+                                }
+                        }
+                }
+                ans_file.close();
+                std::cout << "\nAverage TL results saved to average_TL_results.txt" << std::endl;
+        }
+        else {
+                std::cerr << "Error: Unable to open file to save results." << std::endl;
         }
 
         return 0;
