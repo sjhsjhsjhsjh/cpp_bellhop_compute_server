@@ -25,6 +25,7 @@ read_npz.cpp
 read_output.cpp
 write2file.cpp
 config_param.cpp
+checkpoint_manager.cpp
 )
 
 target_include_directories(underwater_acoustic_computing_core PUBLIC "${CMAKE_SOURCE_DIR}/bhc")
