@@ -11,4 +11,5 @@ build/Release/matlab_output/*
 !build/Release/extract_and_write_tl.m
 !build/Release/parse_env.m
 !build/Release/matlab_output/comparison_report.txt
+!build/Release/key_points.npz
 /.vscode/
