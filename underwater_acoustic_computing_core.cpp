@@ -136,28 +136,30 @@ int main()
         }
 
         // 等待计算完成，顺便提供性能监视器
+        auto start_time = std::chrono::high_resolution_clock::now();
         auto last_time = std::chrono::high_resolution_clock::now();
         auto now_time = std::chrono::high_resolution_clock::now();
         auto elapsed =
                 std::chrono::duration_cast<std::chrono::milliseconds>(now_time - last_time);
+        auto pasted =
+                std::chrono::duration_cast<std::chrono::milliseconds>(now_time - start_time);
         double it_per_sec = 0.0;
         int last_done = 0;
         double estimated_total_time = 0.0;
         while (true) {
                 now_time = std::chrono::high_resolution_clock::now();
-                elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(now_time - last_time);
+                pasted = std::chrono::duration_cast<std::chrono::milliseconds>(now_time - start_time);
 
                 int done = global_computed_count.load(std::memory_order_relaxed);
 
-                it_per_sec = (done - last_done) / (elapsed.count() / 1000.0) * 2;       // *2 是因为这个线程500ms刷新一次
-                last_done = done;
-                last_time = now_time;
+                it_per_sec = done / (pasted.count() / 1000.0);
+
                 estimated_total_time = (total_pairs - done) / double(it_per_sec);
 
                 std::cout << "\rProcessing: " << std::fixed << std::setprecision(2)
                         << (done / static_cast<double>(total_pairs) * 100.0) << "% ("
                         << done << "/" << total_pairs << ")"
-                        << " | it per sec: " << it_per_sec << "s"
+                        << " | it per sec: " << it_per_sec << "it/s"
                         << " | Estimated total time: " << estimated_total_time << "s  "
                         << estimated_total_time / 60 << "m  "
                         << estimated_total_time / 60 / 60 << "h  "

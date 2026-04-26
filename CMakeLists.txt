@@ -29,7 +29,14 @@ config_param.cpp
 
 target_include_directories(underwater_acoustic_computing_core PUBLIC "${CMAKE_SOURCE_DIR}/bhc")
 
+if (WIN32)
 target_link_libraries(underwater_acoustic_computing_core PUBLIC 
         "${CMAKE_SOURCE_DIR}/bin/bellhopcxxlib.lib" 
         cnpy 
         ZLIB::ZLIB)
+elseif (UNIX)
+target_link_libraries(underwater_acoustic_computing_core PUBLIC 
+        "${CMAKE_SOURCE_DIR}/bin/libbellhopcxxlib.a" 
+        cnpy 
+        ZLIB::ZLIB)
+endif()
