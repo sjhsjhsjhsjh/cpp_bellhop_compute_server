@@ -91,7 +91,7 @@ int CheckpointManager::periodic_write()
         for (int u_x = 0; u_x < 101; ++u_x) {
             for (int u_y = 0; u_y < 101; ++u_y) {
                 for (int u_z = 0; u_z < 11; ++u_z) {
-                    if (visited[e_y][u_x][u_y][u_z] && !written[e_y][u_x][u_y][u_z]) {
+                    if (visited[e_y][u_x][u_y][u_z] && written[e_y][u_x][u_y][u_z] == false) {
                         results_to_write.emplace_back(e_y, u_x, u_y, u_z, ans[e_y][u_x][u_y][u_z]);
                     }
                 }

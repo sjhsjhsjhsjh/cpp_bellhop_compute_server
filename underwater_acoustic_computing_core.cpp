@@ -90,15 +90,15 @@ void compute_worker(int start, int end, std::vector<PointPair>& pairs)
                 int uuv_y = static_cast<int>(pair.source.y);
                 int uuv_z = static_cast<int>(pair.source.z);
                 
-                int idx_y = enemy_y / 100;
-                int idx_x = uuv_x / 100;
-                int idx_y2 = uuv_y / 100;
-                int idx_z = uuv_z / 50;
+                int enemy_y_index = enemy_y / 100;
+                int uuv_x_index = uuv_x / 100;
+                int uuv_y_index = uuv_y / 100;
+                int uuv_z_index = uuv_z / 50;
 
                 // 只有在未计算过时才计算和存储
-                if (!visited[idx_y][idx_x][idx_y2][idx_z]) {
-                        ans[idx_y][idx_x][idx_y2][idx_z] = average_TL;
-                        visited[idx_y][idx_x][idx_y2][idx_z] = true;  // 标记为已计算
+                if (!visited[enemy_y_index][uuv_x_index][uuv_y_index][uuv_z_index]) {
+                        ans[enemy_y_index][uuv_x_index][uuv_y_index][uuv_z_index] = average_TL;
+                        visited[enemy_y_index][uuv_x_index][uuv_y_index][uuv_z_index] = true;  // 标记为已计算
                 }
 
                 // 将结果输出到文件
