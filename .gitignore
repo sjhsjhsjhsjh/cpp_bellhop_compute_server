@@ -12,4 +12,5 @@ build/Release/matlab_output/*
 !build/Release/parse_env.m
 !build/Release/matlab_output/comparison_report.txt
 !build/Release/key_points.npz
+!build/Release/qianshui.env
 /.vscode/
