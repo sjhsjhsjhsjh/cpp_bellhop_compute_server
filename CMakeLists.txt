@@ -37,7 +37,7 @@ target_link_libraries(underwater_acoustic_computing_core PUBLIC
         ZLIB::ZLIB)
 elseif (UNIX)
 target_link_libraries(underwater_acoustic_computing_core PUBLIC 
-        "${CMAKE_SOURCE_DIR}/bin/libbellhopcxxlib.a" 
+        "${CMAKE_SOURCE_DIR}/bin/libbellhopcxxstatic.a" 
         cnpy 
         ZLIB::ZLIB)
 endif()
